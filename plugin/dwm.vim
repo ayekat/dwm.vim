@@ -223,7 +223,11 @@ if g:dwm_map_keys
   endif
 endif
 
-if has('autocmd')
+if !exists('g:dwm_auto_center')
+  let g:dwm_auto_center = 1
+endif
+
+if has('autocmd') && g:dwm_auto_center
   augroup dwm
     au!
     au BufWinEnter * if &l:buflisted || &l:filetype == 'help' | call DWM_AutoEnter() | endif
